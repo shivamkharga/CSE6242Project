@@ -9,7 +9,7 @@ npm install -g @angular/cli
 #create our working directory if it doesnt exist
 DIR="/home/ec2-user/CSE6242PROJECT"
 if [ -d "$DIR" ]; then
-  rm -rf ${DIR}
+  sudo rm -rf ${DIR}
 
 echo "Creating ${DIR} directory"
 mkdir ${DIR}
