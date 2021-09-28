@@ -3,7 +3,7 @@ const express = require("express");
 const debug = require("debug")("node-angular");
 const app=express();
 
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 80;
 
 app.set('port',port);
 const users = require("./backend/routes/api/users");
