@@ -1,8 +1,8 @@
-version: 0.0
+ersion: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/express-app
+    destination: /home/ec2-user/CSE6242PROJECT
 hooks:
   ApplicationStop:
     - location: scripts/application_stop.sh
