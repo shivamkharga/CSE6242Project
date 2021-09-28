@@ -8,7 +8,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev": "concurrently \"npm run frontend\" \"npm run start\""
+    "dev": "concurrently \"ng serve\" \"npx nodemon server.js\""
   },
   "private": true,
   "dependencies": {
