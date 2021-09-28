@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname,"dist")));
   
 app.get("*", (req, res) => {
     console.log("here");
-    res.sendFile(path.join(__dirname, "dist/myapp/index.html"));
+    res.sendFile(__dirname, "dist","myapp","index.html");
 });
 
 app.use("/users", users);
