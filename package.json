@@ -1,10 +1,10 @@
 {
-  "name": "CSE6242PROJECT",
+  "name": "goldberg",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "npm run build  && node server.js",
-    "test": "yarn build && node server.js",
+    "start": "npm build && sudo /home/ec2-user/.nvm/versions/node/v16.10.0/bin/node server.js",
+    "test":"yarn build && node server.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
@@ -18,7 +18,6 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "^4.0.0",
     "vue": "^2.6.11",
-    "vue-cli": "^2.9.6",
     "vue-router": "^3.2.0",
     "vuetify": "^2.4.0"
   },

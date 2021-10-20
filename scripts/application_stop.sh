@@ -1,3 +1,3 @@
 #!/bin/bash
 #Stopping existing node servers
-pkill node
+echo "Stopping any existing node servers"
