@@ -3,7 +3,7 @@
 #download node and npm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 . ~/.nvm/nvm.sh
-nvm install node 16.10.0
+nvm install v16.10.0
 npm install -g yarn
 yarn add vue-cli
 
