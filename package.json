@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "NPM_CONFIG_PRODUCTION=false npm install && npm run build  && node server.js",
+    "start": "NPM_CONFIG_PRODUCTION=false npm install && yarn build  && node server.js",
     "test": "yarn build && node server.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
