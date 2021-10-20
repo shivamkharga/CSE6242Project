@@ -5,7 +5,9 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 . ~/.nvm/nvm.
 
 nvm install node
-sudo npm install -g yarn
+
+npm install -g yarn
+
 yarn add vue-cli
 
 #create our working directory if it doesnt exist
