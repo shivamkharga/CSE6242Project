@@ -11,10 +11,10 @@ const users = require("./backend/routes/api/users");
 app.use("/api/users", users);
 
     
-app.use('/',express.static(path.join(__dirname,"backend","angular")));
+app.use('/',express.static(path.join(__dirname,"dist")));
 
 app.use((req,res,next)=>{
-    res.sendFile(path.join(__dirname,"backend","angular","index.html"));
+    res.sendFile(path.join(__dirname,"dist","index.html"));
 });
 
 

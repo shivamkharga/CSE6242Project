@@ -1,27 +1,56 @@
-# Myapp
+# goldberg
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.
+## Environment set up
+* [Node.js](https://nodejs.org/en/)
+* [Yarn](https://yarnpkg.com/)
+* [VSCode](https://code.visualstudio.com/)
+* [(Optional) Vue CLI](https://cli.vuejs.org/guide/installation.html)
+* A web browser (Internet Explorer not supported)
 
-## Development server
+Be sure to install all workspace recommended VSCode extensions that are listed in ./goldberg/.vscode/extenstions.json.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## VSCode
+[VSCode](https://code.visualstudio.com/) has been configured via the workspace settings to autoformat code on file save by using the ESLint, Prettier, and Vetur extensions. This feature should become available one all workspace recommened extensions have been installed and VScode has been restarted.
 
-## Code scaffolding
+## Node.js
+[Node.js](https://nodejs.org/en/) is a dependency for our JS package manager, [Yarn](https://yarnpkg.com/). It is also used to spin up our development web server.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Installation instructions
+Once Node is installed on your system, run the following commands:
 
-## Build
+```
+node -v
+npm -v
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+npm install --global yarn
+yarn --version
+```
 
-## Running unit tests
+Once the commands have been successfully executed, navigate to the goldberg root project directory where you should find a package.json file.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Project setup
+This command is used to build the project dependecies. Version control is managed by package.json and yarn.lock. Dependences live in the node_modules file.
 
-## Running end-to-end tests
+```
+yarn install
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Compiles and hot-reloads for development
+This command is used to run the application in a development environment via localhost.
 
-## Further help
+```
+yarn serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Compiles and minifies for production
+```
+yarn build
+```
+
+### Lints and fixes files
+```
+yarn lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
