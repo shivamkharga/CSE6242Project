@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "yarn build && sudo node server.js",
+    "start": "sudo node server.js",
     "test": "yarn build && node server.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
