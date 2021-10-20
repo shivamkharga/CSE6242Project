@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "yarn build && sudo /home/ec2-user/.nvm/versions/node/v17.0.0/bin/node server.js",
+    "start": "yarn build && sudo /home/ec2-user/.nvm/versions/node/v16.10.0/bin/node server.js",
     "test": "yarn build && node server.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
