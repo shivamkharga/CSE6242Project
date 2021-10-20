@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "NPM_CONFIG_PRODUCTION=false npm install && npm install -g yarn  && yarn add vue-cli && yarn install && npm build && nodemon server.js",
+    "start": "NPM_CONFIG_PRODUCTION=false npm install && npm build && nodemon server.js",
     "test": "yarn build && node server.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
