@@ -13,7 +13,6 @@ export NVM_DIR="$HOME/.nvm"
 
 #install node modules
 npm install
-
 yarn install
 
 #start our node app in the background
