@@ -16,9 +16,14 @@ router.get("/test", (req, res) =>
 // @access  Public
 router.get("/test2", (req, res) =>
   res.json({
-    msg: "Users-/test2  third Works"
+    msg: "Users-/test2 Works"
   })
 );
 
+router.get("/test3", (req, res) =>
+  res.json({
+    msg: "Users-/test3  third Works"
+  })
+);
 
 module.exports = router;
