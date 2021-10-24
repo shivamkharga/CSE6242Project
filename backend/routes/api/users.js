@@ -11,5 +11,14 @@ router.get("/test", (req, res) =>
   })
 );
 
+// @route   GET api/users/test
+// @desc    Tests users route
+// @access  Public
+router.get("/test2", (req, res) =>
+  res.json({
+    msg: "Users-/test2 Works"
+  })
+);
+
 
 module.exports = router;
