@@ -16,7 +16,7 @@ router.get("/test", (req, res) =>
 // @access  Public
 router.get("/test2", (req, res) =>
   res.json({
-    msg: "Users-/test2 Works"
+    msg: "Users-/test2  third Works"
   })
 );
 
