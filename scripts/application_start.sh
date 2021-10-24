@@ -15,7 +15,6 @@ export NVM_DIR="$HOME/.nvm"
 nvm install v16.10.0
 npm install -g yarn
 yarn add vue-cli
-npm install
 yarn install
 
 #start our node app in the background
