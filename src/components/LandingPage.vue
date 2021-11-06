@@ -1,15 +1,14 @@
 <template>
-  <hello-world />
+  <NetworkGraph />
 </template>
 
 <script>
-import HelloWorld from '../components/HelloWorld.vue'
+import NetworkGraph from './NetworkGraph.vue'
 
 export default {
   name: 'Home',
-
   components: {
-    HelloWorld,
+    NetworkGraph,
   },
 }
 </script>

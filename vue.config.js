@@ -6,12 +6,10 @@ module.exports = {
     config.resolve.alias.set('@', path.resolve(__dirname, 'src/'))
     config.plugin('html').tap((args) => {
       // eslint-disable-next-line no-param-reassign
-      args[0].title = 'Procrastinator\'s Recipe Recommendations'
+      args[0].title = "Procrastinator's Recipe Recommendations"
       return args
     })
   },
 
-  transpileDependencies: [
-    'vuetify',
-  ],
+  transpileDependencies: ['vuetify'],
 }

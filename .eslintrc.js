@@ -1,10 +1,9 @@
 module.exports = {
   root: true,
   env: {
-    browser: true,
-    es6: true,
+    node: true,
   },
-  extends: ['plugin:vue/essential', 'airbnb-base'],
+  extends: ['eslint:recommended', 'plugin:vue/recommended', '@vue/prettier'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -14,16 +13,21 @@ module.exports = {
     sourceType: 'module',
     parser: 'babel-eslint',
   },
-  plugins: ['vue', 'prettier'],
-  settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.json', '.vue'],
-      },
-    },
-  },
   rules: {
-    semi: 'off',
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'semi': 'off',
     'vue/script-setup-uses-vars': 'off',
   },
+  overrides: [
+    {
+      files: [
+        '**/__tests__/*.{j,t}s?(x)',
+        '**/tests/unit/**/*.spec.{j,t}s?(x)',
+      ],
+      env: {
+        mocha: true,
+      },
+    },
+  ],
 }
