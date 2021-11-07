@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     nodeClick(event, node) {
-      alert('hello')
+      alert(`id: ${node.id} \nname: ${node.name}`)
       console.log(event, node)
     },
   },
