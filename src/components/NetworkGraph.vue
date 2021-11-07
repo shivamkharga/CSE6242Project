@@ -5,6 +5,7 @@
       :net-nodes="nodes"
       :net-links="links"
       :options="options"
+      @node-click="nodeClick"
     />
   </v-container>
 </template>
@@ -19,10 +20,10 @@ export default {
   data() {
     return {
       nodes: [
-        { id: 1, name: 'my awesome node 1' },
+        { id: 1, name: 'my node 1' },
         { id: 2, name: 'my node 2' },
-        { id: 3, name: 'orange node', _color: 'orange' },
-        { id: 4, _color: '#4466ff' },
+        { id: 3, _color: 'orange' },
+        { id: 4 },
         { id: 5 },
         { id: 6 },
         { id: 7 },
@@ -30,14 +31,9 @@ export default {
         { id: 9 },
       ],
       links: [
-        { sid: 1, tid: 2 },
-        { sid: 2, tid: 8 },
-        {
-          sid: 3,
-          tid: 4,
-          _svgAttrs: { 'stroke-width': 8, opacity: 1 },
-          name: 'custom link',
-        },
+        { sid: 1, tid: 2, _color: 'red' },
+        { sid: 2, tid: 8, _color: 'f0f' },
+        { sid: 3, tid: 4, _color: 'rebeccapurple' },
         { sid: 4, tid: 5 },
         { sid: 5, tid: 6 },
         { sid: 7, tid: 8 },
@@ -45,20 +41,18 @@ export default {
         { sid: 3, tid: 8 },
         { sid: 7, tid: 9 },
       ],
-      nodeSize: 20,
-      canvas: false,
+      options: {
+        force: 3000,
+        nodeSize: 20,
+        nodeLabels: true,
+        linkWidth: 5,
+      },
     }
   },
-  computed: {
-    options() {
-      return {
-        force: 3000,
-        size: { w: 600, h: 600 },
-        nodeSize: this.nodeSize,
-        nodeLabels: true,
-        linkLabels: true,
-        canvas: this.canvas,
-      }
+  methods: {
+    nodeClick(event, node) {
+      alert('hello')
+      console.log(event, node)
     },
   },
 }
