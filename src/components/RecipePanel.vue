@@ -1,9 +1,10 @@
 <template>
-  <v-main id="recipeContainer" class="pt-8">
+  <v-main id="recipeContainer" class="pt-8 pl-2">
     <v-card id="recipePanel" elevation="3" class="pb-4">
-      <v-card-title class="justify-center blue text-capitalize">{{
-        recipeName
-      }}</v-card-title>
+      <v-card-title
+        class="justify-center primary text-capitalize white--text"
+        >{{ recipeName }}</v-card-title
+      >
       <v-card-title class="justify-center">Cook Time</v-card-title>
       <v-card-text class="text-center black--text text-subtitle-1">
         30 minutes
