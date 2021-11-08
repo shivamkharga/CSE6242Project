@@ -1,5 +1,6 @@
 <template>
-  <v-container>
+  <v-main id="network" class="text-center pt-10">
+    <h3>Top 5 recommmended recipes</h3>
     <D3Network
       ref="net"
       :net-nodes="nodes"
@@ -7,7 +8,7 @@
       :options="options"
       @node-click="nodeClick"
     />
-  </v-container>
+  </v-main>
 </template>
 
 <script>
@@ -59,3 +60,9 @@ export default {
 </script>
 
 <style src="vue-d3-network/dist/vue-d3-network.css" />
+<style scoped>
+#network {
+  background-color: aquamarine;
+  width: 50%;
+}
+</style>

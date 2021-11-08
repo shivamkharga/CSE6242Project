@@ -1,14 +1,15 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <main>
-        <h2>Recipe Recommendation</h2>
+    <v-app-bar app dark>
+      <main class="d-flex flex-row">
+        <v-icon large class="mr-4"> mdi-silverware </v-icon>
+        <h2>Procratinators: Food Recipe Recommendation App</h2>
       </main>
 
       <v-spacer />
     </v-app-bar>
 
-    <v-main>
+    <v-main class="amber lighten-5">
       <LandingPage />
     </v-main>
   </v-app>
@@ -22,19 +23,3 @@ export default {
   components: { LandingPage },
 }
 </script>
-
-<style scoped>
-#nav {
-  padding: 30px;
-  text-align: center;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-</style>
