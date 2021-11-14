@@ -6,5 +6,6 @@
   "eslint.validate": [
     "javascript"
   ],
-  "editor.formatOnSave": false
+  "editor.formatOnSave": true,
+  "vetur.completion.tagCasing": "initial"
 }
