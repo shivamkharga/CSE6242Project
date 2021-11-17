@@ -1,6 +1,6 @@
 <template>
   <v-main id="network" class="text-center pt-10">
-    <h3>Top 5 recommmended recipes</h3>
+    <h3>Recommmended Recipes Network</h3>
     <D3Network
       ref="net"
       :net-nodes="nodes"
@@ -21,30 +21,36 @@ export default {
   data() {
     return {
       nodes: [
-        { id: 1, name: 'my node 1' },
-        { id: 2, name: 'my node 2' },
-        { id: 3, _color: 'orange' },
-        { id: 4 },
-        { id: 5 },
+        { id: 1 },
+        { id: 2, name: 'Recipe 1', _color: '#F8EA8C' },
+        { id: 3, name: 'Recipe 2' },
+        { id: 4, name: 'Recipe 3' },
+        { id: 5, name: 'Recipe 4' },
         { id: 6 },
-        { id: 7 },
-        { id: 8 },
+        { id: 7, name: 'Recipe 5' },
+        { id: 8, name: 'User ID' },
         { id: 9 },
+        { id: 10 },
+        { id: 11 },
+        { id: 12 },
       ],
       links: [
-        { sid: 1, tid: 2, _color: 'red' },
-        { sid: 2, tid: 8, _color: 'f0f' },
-        { sid: 3, tid: 4, _color: 'rebeccapurple' },
-        { sid: 4, tid: 5 },
+        { sid: 1, tid: 2 },
+        { sid: 2, tid: 8, _color: '#008080' },
+        { sid: 2, tid: 12 },
+        { sid: 3, tid: 4 },
+        { sid: 4, tid: 8, _color: '#008080' },
         { sid: 5, tid: 6 },
-        { sid: 7, tid: 8 },
-        { sid: 5, tid: 8 },
-        { sid: 3, tid: 8 },
+        { sid: 5, tid: 11 },
+        { sid: 7, tid: 8, _color: '#008080' },
+        { sid: 5, tid: 8, _color: '#008080' },
+        { sid: 3, tid: 8, _color: '#008080' },
         { sid: 7, tid: 9 },
+        { sid: 7, tid: 10 },
       ],
       options: {
         force: 3000,
-        nodeSize: 20,
+        nodeSize: 30,
         nodeLabels: true,
         linkWidth: 5,
       },
@@ -62,7 +68,7 @@ export default {
 <style src="vue-d3-network/dist/vue-d3-network.css" />
 <style scoped>
 #network {
-  background-color: aquamarine;
+  background-color: #a4e8e0;
   width: 50%;
 }
 </style>
