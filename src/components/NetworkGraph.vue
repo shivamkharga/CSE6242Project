@@ -1,5 +1,6 @@
 <template>
-  <v-main id="network" class="text-center pt-10">
+  <v-main id="network" class="text-center pt-8"
+    >8
     <h3 class="mb-6">Top 5 recommmended recipes</h3>
     <network
       :node-list="nodes"

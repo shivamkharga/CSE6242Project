@@ -3,7 +3,7 @@
     <div id="top" class="d-flex justify-end align-center pr-16">
       <h3>[Insert UUID]'s Recommendations</h3>
     </div>
-    <div id="input" class="d-flex">
+    <div id="input" class="d-flex pr-10">
       <v-spacer />
       <v-text-field
         label="Insert User ID"
