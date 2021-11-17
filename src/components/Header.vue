@@ -1,12 +1,17 @@
 <template>
-  <div id="top" class="text-center d-flex justify-center align-center py-6">
-    <h1>
+  <div class="d-flex flex-row py-2 box">
+    <div id="top" class="d-flex justify-end align-center pr-16">
+      <h3>[Insert UUID]'s Recommendations</h3>
+    </div>
+    <div id="input" class="d-flex">
+      <v-spacer />
       <v-text-field
-        label="Insert User ID"
+        label="Filter by User ID"
         placeholder="xxxxxx"
-        filled
-      ></v-text-field>
-    </h1>
+        persistent-hint
+        hint="Max: 3000"
+      />
+    </div>
   </div>
 </template>
 
@@ -18,6 +23,12 @@ export default {
 
 <style scoped>
 #top {
+  flex-grow: 2;
+}
+#input {
+  flex-grow: 1;
+}
+.box {
   background-color: #4cd7d0;
 }
 </style>

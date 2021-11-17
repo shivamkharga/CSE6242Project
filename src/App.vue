@@ -3,7 +3,7 @@
     <v-app-bar app dark>
       <main class="d-flex flex-row">
         <v-icon large class="mr-4"> mdi-silverware </v-icon>
-        <h2>Procrastinators: Food Recipe Recommendation App</h2>
+        <h2>Procrastinators: Recipe Recommendations</h2>
       </main>
 
       <v-spacer />
