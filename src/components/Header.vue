@@ -1,6 +1,12 @@
 <template>
   <div id="top" class="text-center d-flex justify-center align-center py-6">
-    <h1>[Insert UserID]'s Recipe Recommendations</h1>
+    <h1>
+      <v-text-field
+        label="Insert User ID"
+        placeholder="xxxxxx"
+        filled
+      ></v-text-field>
+    </h1>
   </div>
 </template>
 
@@ -12,6 +18,6 @@ export default {
 
 <style scoped>
 #top {
-  background-color: pink;
+  background-color: #4cd7d0;
 }
 </style>

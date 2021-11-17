@@ -23,6 +23,6 @@ export default {
 
 <style scoped>
 #top {
-  background-color: pink;
+  background-color: #4cd7d0;
 }
 </style>

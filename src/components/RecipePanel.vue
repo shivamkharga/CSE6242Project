@@ -3,6 +3,7 @@
     <v-card id="recipePanel" elevation="3" class="pb-4">
       <v-card-title
         class="justify-center primary text-capitalize white--text"
+        style="background: #f8ea8c"
         >{{ recipeName }}</v-card-title
       >
       <v-card-title class="justify-center">Cook Time</v-card-title>
@@ -24,7 +25,7 @@
         Sorry we did our best but no ingredients were provied for this recipe :(
       </v-card-text>
       <v-card-actions class="justify-center">
-        <v-btn elevation="2" color="primary"> GO TO RECIPE </v-btn>
+        <v-btn elevation="2" color="#F8EA8C"> GO TO RECIPE </v-btn>
       </v-card-actions>
     </v-card>
   </v-main>
@@ -56,10 +57,10 @@ export default {
 </script>
 <style scoped>
 #recipeContainer {
-  background-color: orange;
+  background-color: #e1c340;
   width: 50%;
 }
 #recipePanel {
-  width: 60%;
+  width: 65%;
 }
 </style>

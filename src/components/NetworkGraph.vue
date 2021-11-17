@@ -42,7 +42,7 @@ export default {
 
 <style scoped>
 #network {
-  background-color: aquamarine;
+  background-color: #a4e8e0;
   width: 50%;
 }
 </style>
