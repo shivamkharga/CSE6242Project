@@ -6,7 +6,7 @@
     <div id="input" class="d-flex">
       <v-spacer />
       <v-text-field
-        label="Filter by User ID"
+        label="Insert User ID"
         placeholder="xxxxxx"
         persistent-hint
         hint="Max: 3000"
