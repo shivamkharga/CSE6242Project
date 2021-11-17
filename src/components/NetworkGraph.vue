@@ -1,65 +1,45 @@
 <template>
   <v-main id="network" class="text-center pt-10">
     <h3>Top 5 recommmended recipes</h3>
-    <D3Network
-      ref="net"
-      :net-nodes="nodes"
-      :net-links="links"
-      :options="options"
-      @node-click="nodeClick"
-    />
+    <network
+      :node-list="nodes"
+      :link-list="links"
+      @clickNode="nodeClick"
+    ></network>
   </v-main>
 </template>
 
 <script>
-import D3Network from 'vue-d3-network'
+import Network from 'vue-network-d3'
 
 export default {
   name: 'NetworkGraph',
-  components: { D3Network },
+  components: { Network },
 
   data() {
     return {
       nodes: [
-        { id: 1, name: 'my node 1' },
-        { id: 2, name: 'my node 2' },
-        { id: 3, _color: 'orange' },
-        { id: 4 },
-        { id: 5 },
-        { id: 6 },
-        { id: 7 },
-        { id: 8 },
-        { id: 9 },
+        { id: 'Myriel', group: 1 },
+        { id: 'Napoleon', group: 1 },
+        { id: 'Labarre', group: 2 },
+        { id: 'Valjean', group: 2 },
       ],
       links: [
-        { sid: 1, tid: 2, _color: 'red' },
-        { sid: 2, tid: 8, _color: 'f0f' },
-        { sid: 3, tid: 4, _color: 'rebeccapurple' },
-        { sid: 4, tid: 5 },
-        { sid: 5, tid: 6 },
-        { sid: 7, tid: 8 },
-        { sid: 5, tid: 8 },
-        { sid: 3, tid: 8 },
-        { sid: 7, tid: 9 },
+        { source: 'Napoleon', target: 'Myriel', value: 1 },
+        { source: 'Valjean', target: 'Labarre', value: 1 },
+        { source: 'Napoleon', target: 'Valjean', value: 2 },
       ],
-      options: {
-        force: 3000,
-        nodeSize: 20,
-        nodeLabels: true,
-        linkWidth: 5,
-      },
     }
   },
   methods: {
     nodeClick(event, node) {
-      alert(`id: ${node.id} \nname: ${node.name}`)
+      alert(`id: hello`)
       console.log(event, node)
     },
   },
 }
 </script>
 
-<style src="vue-d3-network/dist/vue-d3-network.css" />
 <style scoped>
 #network {
   background-color: aquamarine;
