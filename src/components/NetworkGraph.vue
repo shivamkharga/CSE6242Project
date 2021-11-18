@@ -1,6 +1,5 @@
 <template>
-  <v-main id="network" class="text-center pt-8"
-    >8
+  <v-main id="network" class="text-center pt-8">
     <h3 class="mb-6">Top 5 recommmended recipes</h3>
     <network
       :node-list="nodes"
@@ -13,6 +12,7 @@
 
 <script>
 import Network from 'vue-network-d3'
+import axios from 'axios'
 
 export default {
   name: 'NetworkGraph',
@@ -39,6 +39,15 @@ export default {
         width: window.innerWidth / 2 - 25,
       }
     },
+  },
+  mounted() {
+    axios
+      .get('http://localhost/api/users/test')
+      .then((response) => {
+        alert(response.data)
+        console.log(response)
+      })
+      .catch(() => console.error('something is not right'))
   },
   methods: {
     nodeClick(event, node) {
