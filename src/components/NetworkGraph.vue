@@ -1,11 +1,13 @@
 <template>
-  <v-main id="network" class="text-center pt-10">
-    <h3>Top 5 recommmended recipes</h3>
+  <v-main id="network" class="text-center pt-8"
+    >8
+    <h3 class="mb-6">Top 5 recommmended recipes</h3>
     <network
       :node-list="nodes"
       :link-list="links"
+      :svg-size="svgSize"
       @clickNode="nodeClick"
-    ></network>
+    />
   </v-main>
 </template>
 
@@ -15,7 +17,6 @@ import Network from 'vue-network-d3'
 export default {
   name: 'NetworkGraph',
   components: { Network },
-
   data() {
     return {
       nodes: [
@@ -30,6 +31,14 @@ export default {
         { source: 'Napoleon', target: 'Valjean', value: 2 },
       ],
     }
+  },
+  computed: {
+    svgSize: function () {
+      return {
+        height: window.innerHeight * 0.6,
+        width: window.innerWidth / 2 - 25,
+      }
+    },
   },
   methods: {
     nodeClick(event, node) {
