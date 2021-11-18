@@ -13,6 +13,7 @@
     "dev": "concurrently \"yarn serve\" \"npx nodemon server.js\""
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "concurrently": "^6.3.0",
     "core-js": "^3.6.5",
     "eslint-config-airbnb-base": "^14.2.1",
