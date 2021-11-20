@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "NPM_CONFIG_PRODUCTION=true yarn build && sudo /home/ec2-user/.nvm/versions/node/v16.10.0/bin/node server.js",
+    "start": "yarn build && sudo /home/ec2-user/.nvm/versions/node/v16.10.0/bin/node server.js",
     "test": "yarn build && node server.js",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
