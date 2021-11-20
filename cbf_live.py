@@ -1,3 +1,4 @@
+import sys
 sys.path.append('/home/ec2-user/.local/lib/python3.7/site-packages')
 import numpy as np
 import pandas as pd
@@ -8,7 +9,7 @@ from scipy.sparse import csr_matrix, find
 from scipy import sparse
 import itertools
 import time
-import sys
+
 
 
 
