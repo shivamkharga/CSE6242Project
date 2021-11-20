@@ -20,8 +20,8 @@ router.get('/test2', (req, res) =>
   })
 )
 
-router.get('/test3', (req, res) => {
-  id = 22010
+router.get('/test3/:recipe_id', (req, res) => {
+  id = req.params.recipe_id
   const pyProg = spawn('python3', ['cbf_live.py', id])
   pyProg.stdout.on('data', function (data) {
     reply = JSON.parse(data.toString().replace('\n', '').replaceAll("'", '"'))
