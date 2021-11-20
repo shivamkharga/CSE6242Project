@@ -1,10 +1,13 @@
 #!/bin/bash
 
 #give permission for everything in the express-app directory
-sudo chmod -R 777 /home/ec2-user/CSE6242PROJECT
+
 sudo apt-get update
 sudo apt install python-pip
-
+pip install numpy
+pip install pandas
+pip install -U scikit-learn
+sudo chmod -R 777 /home/ec2-user/CSE6242PROJECT
 
 #navigate into our working directory where we have all our github files
 cd /home/ec2-user/CSE6242PROJECT
@@ -16,9 +19,7 @@ export NVM_DIR="$HOME/.nvm"
 
 #install node modules
 
-pip install numpy
-pip install pandas
-pip install -U scikit-learn
+
 nvm install v16.10.0
 npm install -g yarn
 yarn add vue-cli
