@@ -1,3 +1,4 @@
+sys.path.append('/home/ec2-user/.local/lib/python3.7/site-packages')
 import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -9,7 +10,7 @@ import itertools
 import time
 import sys
 
-sys.path.append('/home/ec2-user/.local/lib/python3.7/site-packages')
+
 
 
 def parallelize_sparse_matrix2(tfidf_matrix, list_of_indices, ret=20):
