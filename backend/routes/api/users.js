@@ -22,7 +22,7 @@ router.get('/test2', (req, res) =>
 router.get('/test3', (req, res) => {
   id = 22010
   const { spawn } = require('child_process')
-  const pyProg = spawn('python', ['cbf_live.py', id])
+  const pyProg = spawn('python3', ['cbf_live.py', id])
   pyProg.stdout.on('data', function (data) {
     reply = JSON.parse(data.toString().replace('\n', '').replaceAll("'", '"'))
     recommendations = reply.recommendation
