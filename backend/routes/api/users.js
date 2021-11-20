@@ -28,7 +28,6 @@ router.get('/test3', (req, res) => {
     recommendations = reply.recommendation
     edges = reply.edges
     console.log(edges)
-
     for (i = 0; i < recommendations.length; i++) {
       recipe = recommendations[i]
       id2 = recipe.id
