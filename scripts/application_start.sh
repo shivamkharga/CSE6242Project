@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #give permission for everything in the express-app directory
-
+sudo apt-get install python3.6
 sudo apt-get update
 sudo apt install python-pip
 pip install numpy
