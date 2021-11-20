@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const { spawn } = require('child_process')
 
 // @route   GET api/users/test
 // @desc    Tests users route
@@ -21,7 +22,6 @@ router.get('/test2', (req, res) =>
 
 router.get('/test3', (req, res) => {
   id = 22010
-  const { spawn } = require('child_process')
   const pyProg = spawn('python3', ['cbf_live.py', id])
   pyProg.stdout.on('data', function (data) {
     reply = JSON.parse(data.toString().replace('\n', '').replaceAll("'", '"'))
