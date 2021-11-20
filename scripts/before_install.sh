@@ -11,6 +11,8 @@ yarn add vue-cli
 DIR="/home/ec2-user/CSE6242PROJECT"
 if [ -d "$DIR" ]; then
   echo "${DIR} exists"
+  rmdir ${DIR}
+  mkdir ${DIR}
 else
   echo "Creating ${DIR} directory"
   mkdir ${DIR}
