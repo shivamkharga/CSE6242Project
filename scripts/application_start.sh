@@ -2,9 +2,9 @@
 
 #give permission for everything in the express-app directory
 sudo yum -y install python-pip
-pip install numpy
-pip install pandas
-pip install -U scikit-learn
+pip3 install numpy
+pip3 install pandas
+pip3 install -U scikit-learn
 sudo chmod -R 777 /home/ec2-user/CSE6242PROJECT
 
 #navigate into our working directory where we have all our github files
