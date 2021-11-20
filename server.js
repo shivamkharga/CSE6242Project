@@ -9,6 +9,8 @@ const users = require('./backend/routes/api/users')
 
 console.log('env:', process.env.NODE_ENV)
 
+app.use('/api/users', users)
+
 if (process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.join(__dirname, 'dist')))
 
@@ -22,8 +24,6 @@ if (process.env.NODE_ENV === 'production') {
     res.send('hello from nodejs. Frontend is at different port ')
   })
 }
-
-app.use('/api/users', users)
 
 app.listen(port, () => {
   console.log(`listening to port: ${port}`)
