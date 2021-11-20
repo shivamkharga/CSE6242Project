@@ -16,6 +16,7 @@ nvm install v16.10.0
 npm install -g yarn
 yarn add vue-cli
 yarn install
+nvm install v16.10.0
 
 #start our node app in the background
 npm start > app.out.log 2> app.err.log < /dev/null & 
