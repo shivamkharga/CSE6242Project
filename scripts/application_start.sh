@@ -17,7 +17,6 @@ export NVM_DIR="$HOME/.nvm"
 
 #install node modules
 
-
 nvm install v16.10.0
 npm install -g yarn
 yarn add vue-cli

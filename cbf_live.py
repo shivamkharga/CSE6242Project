@@ -79,7 +79,7 @@ def get_recipe_recommendation(recipe, top_matches):
     
     # look for rows with most non-zeroes
     matches = get_highest_word_count(sub, top_matches+1)
-    print(matches)
+    #print(matches)
     
     #print(sub)
     #list_to_check = list(np.unique(find(sub)[0]))
@@ -94,9 +94,32 @@ def get_recipe_recommendation(recipe, top_matches):
 
     scores = parallelize_sparse_matrix2(tfidf_matrix,pairs_to_check, 10)
     finTime = time.time()*1000     
-    print("Took ",(finTime-stTime)*.001," seconds")
+    # print("Took ",(finTime-stTime)*.001," seconds")
 
     return scores
 
-if __name__ == "__main__":
-    get_recipe_recommendation(int(sys.argv[1]),5)
+initial_recommendation = get_recipe_recommendation(int(sys.argv[1]),5)
+edges=[]
+recommendation=[]
+#print(initial_recommendation)
+# print(type(initial_recommendation))
+for index,row in initial_recommendation.iterrows():
+    # print(row['Recipe2'])
+    id1 = int(row['Recipe2'])
+    list_of_recomendaions =[]
+    similar_recommendation = get_recipe_recommendation(id1,5)
+    
+    for j, receipe in similar_recommendation.iterrows():
+        id2 = int(receipe['Recipe2'])
+        edges.append([id1,id2])
+        list_of_recomendaions.append(id2)
+
+    json= {
+        "id" : id1,
+        "recommendations":list_of_recomendaions 
+    }
+    recommendation.append(json)
+
+reply = { "recommendation": recommendation, "edges": edges }
+print(reply)
+sys.stdout.flush()
