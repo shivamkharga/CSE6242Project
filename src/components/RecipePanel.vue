@@ -1,5 +1,5 @@
 <template>
-  <v-main id="recipeContainer" class="pt-8 pl-2">
+  <v-main id="recipeContainer" class="pt-5 pl-2">
     <v-card id="recipePanel" elevation="3" class="pb-4">
       <v-card-title
         class="justify-center lime lighten-1 text-capitalize white--text"
@@ -7,7 +7,7 @@
       >
       <v-card-title class="justify-center">Cook Time</v-card-title>
       <v-card-text class="text-center black--text text-subtitle-1 pb-0">
-        30 minutes
+        {{ cookTime }} minutes
       </v-card-text>
       <v-card-title>Description</v-card-title>
       <v-card-text v-if="description !== ''">
@@ -30,11 +30,17 @@
   </v-main>
 </template>
 <script>
+import { RECIPE_DATA } from '../js/DUMMY_DATA'
+
 export default {
   name: 'RecipePanel',
+  props: {
+    recipeId: { type: Number, default: 0, required: true },
+  },
   data: () => ({
-    id: 137739,
+    id: RECIPE_DATA[0].id,
     recipeName: 'arriba  baked winter squash mexican style',
+    cookTime: 30,
     description:
       'autumn is my favorite time of year to cook! this recipe can be prepared either spicy or sweet, your choice!two of my posted mexican-inspired seasoning mix recipes are offered as suggestions.',
     ingredients: [
@@ -47,9 +53,23 @@ export default {
       'salt',
     ],
   }),
+  watch: {
+    recipeId: function (newVal, oldVal) {
+      this.updateRecipePanel()
+      console.log('Prop changed: ', newVal, ' | was: ', oldVal)
+    },
+  },
   methods: {
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1)
+    },
+    updateRecipePanel() {
+      let data = RECIPE_DATA.filter((data) => data.id == this.recipeId)
+      this.id = data[0].id
+      this.recipeName = data[0].recipeName
+      this.description = data[0].description
+      this.ingredients = data[0].ingredients
+      this.cookTime = data[0].cookTime
     },
   },
 }

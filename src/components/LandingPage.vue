@@ -1,9 +1,12 @@
 <template>
   <div class="mx-4">
-    <Header />
+    <Header @filter-user="updateUserId($event)" />
     <div class="d-flex flex-row">
-      <NetworkGraph />
-      <RecipePanel />
+      <NetworkGraph
+        :user-id="filter"
+        @selectedNode="updateRecipePanel($event)"
+      />
+      <RecipePanel :recipe-id="selectedNode" />
     </div>
   </div>
 </template>
@@ -19,6 +22,18 @@ export default {
     NetworkGraph,
     Header,
     RecipePanel,
+  },
+  data: () => ({
+    filter: 10,
+    selectedNode: 0,
+  }),
+  methods: {
+    updateUserId(id) {
+      this.filter = id
+    },
+    updateRecipePanel(recipeId) {
+      this.selectedNode = recipeId
+    },
   },
 }
 </script>
