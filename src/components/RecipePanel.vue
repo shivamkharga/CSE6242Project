@@ -1,13 +1,19 @@
 <template>
   <v-main id="recipeContainer" class="pt-5 pl-2">
-    <v-card id="recipePanel" elevation="3" class="pb-4">
+    <v-card v-if="id != null" id="recipePanel" elevation="3" class="pb-4">
       <v-card-title
+        v-if="recipeName != ''"
         class="justify-center lime lighten-1 text-capitalize white--text"
         >{{ recipeName }}</v-card-title
       >
+      <v-card-title
+        v-else
+        class="justify-center lime lighten-1 text-capitalize red--text"
+        >Sorry, try another recipe</v-card-title
+      >
       <v-card-title class="justify-center">Cook Time</v-card-title>
       <v-card-text class="text-center black--text text-subtitle-1 pb-0">
-        {{ cookTime }} minutes
+        {{ formatCookTime(cookTime) }}
       </v-card-text>
       <v-card-title>Description</v-card-title>
       <v-card-text v-if="description !== ''">
@@ -27,6 +33,16 @@
         <v-btn elevation="2" color="lime lighten-1"> GO TO RECIPE </v-btn>
       </v-card-actions>
     </v-card>
+
+    <v-card v-else id="recipePanel" elevation="3" class="pb-4">
+      <v-card-title
+        class="justify-center lime lighten-1 text-capitalize white--text"
+        >Recipe Panel</v-card-title
+      >
+      <v-card-text class="text-capitalize pt-16">
+        Select a node in the network diagram to view recipe details
+      </v-card-text>
+    </v-card>
   </v-main>
 </template>
 <script>
@@ -38,25 +54,15 @@ export default {
     recipeId: { type: Number, default: 0, required: true },
   },
   data: () => ({
-    id: RECIPE_DATA[0].id,
-    recipeName: 'arriba  baked winter squash mexican style',
-    cookTime: 30,
-    description:
-      'autumn is my favorite time of year to cook! this recipe can be prepared either spicy or sweet, your choice!two of my posted mexican-inspired seasoning mix recipes are offered as suggestions.',
-    ingredients: [
-      'winter squash',
-      'mexican seasoning',
-      'mixed spice',
-      'honey',
-      'butter',
-      'olive oil',
-      'salt',
-    ],
+    id: null,
+    recipeName: '',
+    cookTime: 0,
+    description: '',
+    ingredients: [],
   }),
   watch: {
-    recipeId: function (newVal, oldVal) {
+    recipeId: function () {
       this.updateRecipePanel()
-      console.log('Prop changed: ', newVal, ' | was: ', oldVal)
     },
   },
   methods: {
@@ -70,6 +76,19 @@ export default {
       this.description = data[0].description
       this.ingredients = data[0].ingredients
       this.cookTime = data[0].cookTime
+    },
+    formatCookTime(minutes) {
+      let minuteformat = minutes % 60 > 1 ? 'minutes' : 'minutes'
+      if (minutes < 10) return '0' + minutes
+      else if (minutes == 60) return `${minutes / 60} hour`
+      else if (minutes > 60) {
+        if (minutes % 60 == 0) return `${Math.floor(minutes / 60)} hours`
+        else {
+          return `${Math.floor(minutes / 60)} hours ${
+            minutes % 60
+          } ${minuteformat}`
+        }
+      } else return `${minutes} minutes`
     },
   },
 }

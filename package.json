@@ -16,6 +16,7 @@
     "axios": "^0.24.0",
     "concurrently": "^6.3.0",
     "core-js": "^3.6.5",
+    "cors": "^2.8.5",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.25.2",

@@ -1,7 +1,9 @@
 <template>
   <div class="d-flex flex-row py-2 box">
     <div id="top" class="d-flex justify-end align-center pr-16">
-      <h3>Recommendations for user {{ uidInTitle }}</h3>
+      <h3>
+        Recommendations for user {{ uidInTitle == '' ? '0' : uidInTitle }}
+      </h3>
     </div>
     <div id="input" class="d-flex pr-10">
       <v-spacer />
