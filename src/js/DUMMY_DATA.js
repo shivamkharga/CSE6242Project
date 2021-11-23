@@ -42,7 +42,7 @@ export const RECIPE_DATA = [
   {
     id: 45,
     recipeName: 'test recipe',
-    cookTime: 45,
+    cookTime: 480,
     description: 'So good you will smack your mama',
     ingredients: [
       'salt',
@@ -57,7 +57,7 @@ export const RECIPE_DATA = [
   {
     id: 81,
     recipeName: 'Great Recipe',
-    cookTime: 15,
+    cookTime: 360,
     description: 'even better than the other one',
     ingredients: ['macaroni', 'rice', 'butter', 'olive oil', 'salt'],
   },

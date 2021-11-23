@@ -36,19 +36,21 @@ export default {
     },
   },
   watch: {
-    userId: function (newVal, oldVal) {
+    userId: function () {
       this.updateNetorkData()
-      console.log('Prop changed: ', newVal, ' | was: ', oldVal)
     },
   },
   mounted() {
     axios
       .get('http://localhost/api/users/test')
       .then((response) => {
-        alert(response.data)
-        console.log(response)
+        alert(response.data.msg)
       })
-      .catch(() => console.error('something is not right'))
+      .catch(() =>
+        console.error(
+          'Failed to make api request http://localhost/api/users/test'
+        )
+      )
   },
   methods: {
     nodeSelected(e, node) {
