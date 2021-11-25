@@ -8,11 +8,16 @@
     <div id="input" class="d-flex pr-10">
       <v-spacer />
       <v-text-field
-        v-model="userId"
+        v-model.number="userId"
+        required
+        :rules="[
+          (v) => !!v || 'ID is required',
+          (v) => (v && v <= 11043) || 'Select ID from 0 to 11043',
+        ]"
         label="Insert User ID"
-        placeholder="xxxxxx"
+        placeholder="xxxxx"
         persistent-hint
-        hint="Max: 3000"
+        hint="Max: 11043"
         @keyup.enter="pressedEnter"
       />
     </div>
