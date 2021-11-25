@@ -10,14 +10,13 @@
       <v-text-field
         v-model.number="userId"
         required
-        :rules="[
-          (v) => !!v || 'ID is required',
-          (v) => (v && v <= 11043) || 'Select ID from 0 to 11043',
-        ]"
+        :rules="[(v) => v <= 11043 || 'Select ID from 0 to 11043']"
         label="Insert User ID"
         placeholder="xxxxx"
         persistent-hint
         hint="Max: 11043"
+        clearable
+        :counter="5"
         @keyup.enter="pressedEnter"
       />
     </div>
@@ -31,6 +30,7 @@ export default {
     return {
       userId: '',
       uidInTitle: '',
+      shouldValidate: false,
     }
   },
   methods: {
