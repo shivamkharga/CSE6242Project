@@ -12,7 +12,7 @@
         required
         :rules="[
           (v) => !!v || 'ID is required',
-          (v) => (v && v <= 11043) || 'Incorrect ID',
+          (v) => (v && v <= 11043) || 'Select ID from 0 to 11043',
         ]"
         label="Insert User ID"
         placeholder="xxxxx"
