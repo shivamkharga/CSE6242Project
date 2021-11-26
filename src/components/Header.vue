@@ -16,7 +16,6 @@
         persistent-hint
         hint="Max: 11043"
         clearable
-        :counter="5"
         @keyup.enter="pressedEnter"
       />
     </div>
