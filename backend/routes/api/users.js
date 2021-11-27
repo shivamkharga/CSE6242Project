@@ -1,48 +1,58 @@
 const express = require('express')
 const router = express.Router()
 const { spawn } = require('child_process')
+const db = require('../../db/connection')
+const usersModel = require('../../models/users')
 
 // @route   GET api/users/test
 // @desc    Tests users route
 // @access  Public
-router.get('/test', (req, res) =>
+router.get('/', async (req, res) => {
+  var databasesList = await usersModel.find({})
+
+  // console.log('Databases:' + databasesList)
   res.json({
-    msg: 'Users Works',
+    size: databasesList.length - 1,
   })
-)
+})
 
-// @route   GET api/users/test
-// @desc    Tests users route
-// @access  Public
-router.get('/test2', (req, res) =>
-  res.json({
-    msg: 'Users-/test2 Works',
-  })
-)
+router.get('/:user_id', async (req, res) => {
+  const id = req.params.user_id
+  var users = await usersModel.find({ _id: id })
+  // console.log('users' + users)
+  if (users != null && users[0] != null) {
+    // id = user.getId()
+    var user = users[0]
+    // console.log(user)
+    var recs =
+      user.rec1 +
+      ',' +
+      user.rec2 +
+      ',' +
+      user.rec3 +
+      ',' +
+      user.rec4 +
+      ',' +
+      user.rec5
 
-router.get('/test3/:recipe_id', (req, res) => {
-  id = req.params.recipe_id
-  const pyProg = spawn('python3', ['cbf_live.py', id])
-  pyProg.stdout.on('data', function (data) {
-    reply = JSON.parse(data.toString().replace('\n', '').replaceAll("'", '"'))
-    recommendations = reply.recommendation
-    edges = reply.edges
+    const pyProg = await spawn('python3', ['cbf_live.py', recs])
 
-    for (i = 0; i < recommendations.length; i++) {
-      recipe = recommendations[i]
-      id2 = recipe.id
-      edges.push([id, id2])
-    }
+    await pyProg.stdout.on('data', async function (data) {
+      var nodes = JSON.parse(
+        data.toString().replace('\n', '').replaceAll("'", '"')
+      )
 
-    res.json({
-      recipe_id: id,
-      recommendations: recommendations,
-      edges: edges,
+      var reply = {
+        user_id: user.id,
+        nodes: nodes.nodes,
+        links: nodes.links,
+      }
+
+      return res.json(reply)
     })
-  })
-  pyProg.stderr.on('data', (data) => {
-    console.log(data.toString())
-  })
+  } else {
+    return res.status(400).json({ error: 'user not found' })
+  }
 })
 
 module.exports = router

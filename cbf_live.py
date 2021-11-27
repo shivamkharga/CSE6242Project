@@ -101,28 +101,43 @@ def get_recipe_recommendation(recipe, top_matches):
 
     return scores
 
-initial_recommendation = get_recipe_recommendation(int(sys.argv[1]),5)
-edges=[]
-recommendation=[]
-#print(initial_recommendation)
-# print(type(initial_recommendation))
-for index,row in initial_recommendation.iterrows():
-    # print(row['Recipe2'])
-    id1 = int(row['Recipe2'])
-    list_of_recomendaions =[]
-    similar_recommendation = get_recipe_recommendation(id1,5)
-    
-    for j, receipe in similar_recommendation.iterrows():
-        id2 = int(receipe['Recipe2'])
-        edges.append([id1,id2])
-        list_of_recomendaions.append(id2)
 
-    json= {
-        "id" : id1,
-        "recommendations":list_of_recomendaions 
+req= sys.argv[1].split(",")
+nodes=[]
+edges =[]
+# print(req)
+i=0
+for  recipeId in req:
+    i+=1
+    id1= int(recipeId)
+    node = {
+        "id": id1,
+        "group":i
     }
-    recommendation.append(json)
+    # print(id1)
+    nodes.append(node)
+    try:
+        initial_recommendation = get_recipe_recommendation(id1,3)
+        # print(initial_recommendation.iterrows())
+        for index, row in initial_recommendation.iterrows():
+            # print(int(row['Recipe2']))
 
-reply = { "recommendation": recommendation, "edges": edges }
+            id2 = int(row['Recipe2'])
+            edge = {
+                "source":int(id1),
+                "target":int(id2),
+                "value":int(i)
+            }
+            edges.append(edge)
+    except Exception:
+        pass
+
+    
+
+reply= {
+    "nodes" : nodes,
+    "links":edges
+}
+
 print(reply)
 sys.stdout.flush()
