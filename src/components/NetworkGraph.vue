@@ -1,11 +1,18 @@
 <template>
   <v-main id="network" class="text-center pt-8">
-    <h3 class="mb-6">Top 5 recommmended recipes</h3>
+    <h3 class="mb-2">User-Recipe Network</h3>
+    <div class="black white--text my-0">
+      <p v-if="recipeName != ''" class="my-0 py-2">
+        Recipe name: {{ recipeName }}
+      </p>
+      <p v-else class="my-0 py-2">Hover over a node to get the recipe name</p>
+    </div>
     <network
       :node-list="nodes"
       :link-list="links"
       :svg-size="svgSize"
       @clickNode="nodeSelected"
+      @hoverNode="displayRecipeName"
     />
   </v-main>
 </template>
@@ -25,6 +32,7 @@ export default {
     return {
       nodes: NETWORK_DATA[0].nodes,
       links: NETWORK_DATA[0].links,
+      recipeName: '',
     }
   },
   computed: {
@@ -60,6 +68,9 @@ export default {
       let data = NETWORK_DATA.filter((data) => data.user_id == this.userId)
       this.nodes = data[0].nodes
       this.links = data[0].links
+    },
+    displayRecipeName(e, node) {
+      this.recipeName = node.id
     },
   },
 }
