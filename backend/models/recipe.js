@@ -10,7 +10,7 @@ const recipeSchema = new Schema(
     //   steps: String,
     avg_ratings: Number,
   },
-  { collection: 'receipe' }
+  { collection: 'recipe' }
 )
 
 module.exports = mongoose.model('recipe', recipeSchema)
