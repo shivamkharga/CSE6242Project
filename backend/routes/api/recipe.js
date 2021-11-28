@@ -21,7 +21,9 @@ router.get('/:recipeId', async (req, res) => {
     }
   } catch (error) {
     console.log(error)
-    return res.status(501).json({ error: 'Something went wrong' })
+    return res
+      .status(501)
+      .json({ error: 'Invalid Recipe Id or Something went wrong' })
   }
 })
 
