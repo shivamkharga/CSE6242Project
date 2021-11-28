@@ -45,7 +45,7 @@ yarn serve
 To run the backend and the frontend application simultaneously, run 
 
 ```
-npm run dev
+yarn dev
 ```
 
 This will run the backend api at localhost:80 and the frontend api at localhost:8080
