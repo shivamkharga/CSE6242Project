@@ -7,6 +7,12 @@
 * [(Optional) Vue CLI](https://cli.vuejs.org/guide/installation.html)
 * A web browser (Internet Explorer not supported)
 
+Please install python-pip and the following dependencies using pip
+sudo yum -y install python-pip
+pip3 install numpy
+pip3 install pandas
+pip3 install -U scikit-learn
+
 Be sure to install all workspace recommended VSCode extensions that are listed in ./goldberg/.vscode/extenstions.json.
 
 ## VSCode
