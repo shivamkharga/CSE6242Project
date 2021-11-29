@@ -42,11 +42,19 @@ yarn install
 ```
 
 ### Compiles and hot-reloads for development
-This command is used to run the application in a development environment via localhost.
+This command is used to run the frontend application only in a development environment via localhost.
 
 ```
 yarn serve
 ```
+
+To run the backend and the frontend application simultaneously, run 
+
+```
+yarn dev
+```
+
+This will run the backend api at localhost:80 and the frontend api at localhost:8080
 
 ### Compiles and minifies for production
 ```
