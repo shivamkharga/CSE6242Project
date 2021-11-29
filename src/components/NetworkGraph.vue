@@ -14,6 +14,11 @@
       @clickNode="nodeSelected"
       @hoverNode="displayRecipeName"
     />
+    <v-overlay :opacity="1" :value="overlay">
+      <v-progress-circular indeterminate size="64">
+        Loading...
+      </v-progress-circular>
+    </v-overlay>
   </v-main>
 </template>
 
@@ -33,6 +38,7 @@ export default {
       nodes: NETWORK_DATA[0].nodes,
       links: NETWORK_DATA[0].links,
       recipeName: '',
+      overlay: true,
     }
   },
   computed: {
@@ -49,6 +55,7 @@ export default {
     },
   },
   mounted() {
+    this.overlay = false
     axios
       .get('http://localhost/api/users/test')
       .then((response) => {
