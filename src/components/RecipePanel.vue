@@ -57,7 +57,7 @@
         Select a node in the network diagram to view recipe details
       </v-card-text>
     </v-card>
-    <v-overlay :opacity="1" :value="overlay">
+    <v-overlay :opacity="0.6" :value="overlay">
       <v-progress-circular indeterminate size="64">
         Loading...
       </v-progress-circular>

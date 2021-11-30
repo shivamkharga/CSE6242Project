@@ -14,7 +14,7 @@
       @clickNode="nodeSelected"
       @hoverNode="displayRecipeName"
     />
-    <v-overlay :opacity="1" :value="overlay">
+    <v-overlay :opacity="0.6" :value="overlay">
       <v-progress-circular indeterminate size="64">
         Loading...
       </v-progress-circular>
