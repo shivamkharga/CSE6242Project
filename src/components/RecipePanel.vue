@@ -57,6 +57,11 @@
         Select a node in the network diagram to view recipe details
       </v-card-text>
     </v-card>
+    <v-overlay :opacity="0.6" :value="overlay">
+      <v-progress-circular indeterminate size="64">
+        Loading...
+      </v-progress-circular>
+    </v-overlay>
   </v-main>
 </template>
 <script>
@@ -75,7 +80,11 @@ export default {
     ingredients: [],
     steps: [],
     shouldShowFullText: false,
+    overlay: true,
   }),
+  mounted() {
+    this.overlay = false
+  },
   watch: {
     recipeId: function () {
       this.updateRecipePanel()
