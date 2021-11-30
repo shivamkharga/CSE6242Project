@@ -36,17 +36,53 @@ router.get('/:user_id', async (req, res) => {
         ',' +
         user.rec5
 
+      var nodesList = [
+        {
+          id: parseInt(user.id),
+          group: 0,
+        },
+      ]
+
+      var linksList = [
+        {
+          source: parseInt(user.id),
+          target: parseInt(user.rec1),
+          value: 0,
+        },
+        {
+          source: parseInt(user.id),
+          target: parseInt(user.rec2),
+          value: 0,
+        },
+        {
+          source: parseInt(user.id),
+          target: parseInt(user.rec3),
+          value: 0,
+        },
+        {
+          source: parseInt(user.id),
+          target: parseInt(user.rec4),
+          value: 0,
+        },
+        {
+          source: parseInt(user.id),
+          target: parseInt(user.rec5),
+          value: 0,
+        },
+      ]
+
       const pyProg = await spawn('python3', ['cbf_live.py', recs])
 
       await pyProg.stdout.on('data', async function (data) {
         var nodes = JSON.parse(
           data.toString().replace('\n', '').replaceAll("'", '"')
         )
-
+        nodesList.push.apply(nodesList, nodes.nodes)
+        linksList.push.apply(linksList, nodes.links)
         var reply = {
-          user_id: user.id,
-          nodes: nodes.nodes,
-          links: nodes.links,
+          user_id: parseInt(user.id),
+          nodes: nodesList,
+          links: linksList,
         }
 
         return res.json(reply)
