@@ -32,7 +32,7 @@ export default {
       this.filter = id
     },
     updateRecipePanel(recipeId) {
-      this.selectedNode = recipeId
+      this.selectedNode = Number(recipeId)
     },
   },
 }
