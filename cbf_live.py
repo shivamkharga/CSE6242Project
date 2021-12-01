@@ -123,12 +123,17 @@ for  recipeId in req:
             # print(int(row['Recipe2']))
 
             id2 = int(row['Recipe2'])
+            node2 = {
+                 "id": id2,
+                "group":i
+            }
             edge = {
                 "source":int(id1),
                 "target":int(id2),
                 "value":int(i)
             }
             edges.append(edge)
+            nodes.append(node2)
     except Exception:
         pass
 
