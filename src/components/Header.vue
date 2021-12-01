@@ -34,8 +34,11 @@ export default {
   },
   methods: {
     pressedEnter() {
-      this.$emit('filter-user', parseInt(this.userId))
-      this.uidInTitle = this.userId
+      let u = parseInt(this.userId)
+      if (!u.isNan && u >= 0) {
+        this.$emit('filter-user', parseInt(this.userId))
+        this.uidInTitle = this.userId
+      }
       this.userId = ''
     },
   },
