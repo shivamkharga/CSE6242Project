@@ -6,14 +6,18 @@
 * [VSCode](https://code.visualstudio.com/)
 * [(Optional) Vue CLI](https://cli.vuejs.org/guide/installation.html)
 * A web browser (Internet Explorer not supported)
+* [Python 3](https://www.python.org/)
+* Python dependencies: pip, pandas, numpy, scikit-learn
 
-Please install python-pip and the following dependencies using pip
+Please install python-pip and the following dependencies using pip. For RedHat Linux based systems use the commands below:
+```
 sudo yum -y install python-pip
 pip3 install numpy
 pip3 install pandas
 pip3 install -U scikit-learn
+```
 
-Be sure to install all workspace recommended VSCode extensions that are listed in ./goldberg/.vscode/extenstions.json.
+Be sure to install all workspace recommended VSCode extensions that are listed in ./CSE6242Project/.vscode/extenstions.json.
 
 ## VSCode
 [VSCode](https://code.visualstudio.com/) has been configured via the workspace settings to autoformat code on file save by using the ESLint, Prettier, and Vetur extensions. This feature should become available one all workspace recommened extensions have been installed and VScode has been restarted.
