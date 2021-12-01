@@ -27,4 +27,28 @@ router.get('/:recipeId', async (req, res) => {
   }
 })
 
+router.get('/getName/:recipeId', async (req, res) => {
+  try {
+    const recipeId = parseInt(req.params.recipeId)
+    //   console.log('here' + recipeId)
+    var recipes = await recipeModel.find({ _id: recipeId })
+    //   console.log('users' + recipes)
+    if (recipes != null && recipes[0] != null) {
+      // id = user.getId()
+      var recipe = recipes[0]
+      var name = recipe.name
+      return res.json({
+        name: name,
+      })
+    } else {
+      return res.status(400).json({ error: 'recipe not found' })
+    }
+  } catch (error) {
+    console.log(error)
+    return res
+      .status(501)
+      .json({ error: 'Invalid Recipe Id or Something went wrong' })
+  }
+})
+
 module.exports = router
