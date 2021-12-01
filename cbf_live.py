@@ -81,7 +81,7 @@ def get_recipe_recommendation(recipe, top_matches):
     sub = tfidf_matrix[:,colsToKp]
     
     # look for rows with most non-zeroes
-    matches = get_highest_word_count(sub, top_matches+1)
+    matches = get_highest_word_count(sub, 151)
     #print(matches)
     
     #print(sub)
@@ -95,7 +95,7 @@ def get_recipe_recommendation(recipe, top_matches):
     #print("Found ",len(matches)," possible matches for recipe ",recipe)
     pairs_to_check = [[recipe,i] for i in matches]
 
-    scores = parallelize_sparse_matrix2(tfidf_matrix,pairs_to_check, 10)
+    scores = parallelize_sparse_matrix2(tfidf_matrix,pairs_to_check, 3)
     finTime = time.time()*1000     
     # print("Took ",(finTime-stTime)*.001," seconds")
 
