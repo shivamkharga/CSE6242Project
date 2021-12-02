@@ -126,8 +126,7 @@ export default {
         return `${d} ${dayformat} ${h} ${hourformat} ${m} ${minuteformat}`
       }
 
-      if (minutes < 10) return '0' + minutes
-      else if (minutes == 60) return `${minutes / 60} hour`
+      if (minutes == 60) return `${minutes / 60} hour`
       else if (minutes > 60) {
         if (m == 0) return `${h} hours`
         else {
