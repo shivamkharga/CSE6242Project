@@ -1,20 +1,23 @@
 <template>
   <div class="d-flex flex-row py-2 box">
     <div id="top" class="d-flex justify-end align-center pr-16">
-      <h3>
-        Recommendations for user {{ uidInTitle == '' ? '0' : uidInTitle }}
-      </h3>
+      <h3>Generated Recommendations for User #{{ filter }}</h3>
     </div>
-    <div id="input" class="d-flex pr-10">
+    <div id="input" class="d-flex pr-10 pt-1 justify-center">
       <v-spacer />
       <v-text-field
         v-model.number="userId"
         required
-        :rules="[(v) => v <= 11043 || 'Select ID from 0 to 11043']"
-        label="Insert User ID"
-        placeholder="xxxxx"
+        outlined
+        :rules="[
+          (v) => (v <= maxNumOfUsers && v >= 0) || 'Select ID from 0 to 11043',
+        ]"
+        label="Click here to begin filtering"
+        background-color="#cce3de"
+        placeholder="Enter a numeric user_id"
+        autofocus
         persistent-hint
-        hint="Max: 11043"
+        :hint="`Max user_id: ${maxNumOfUsers}`"
         clearable
         @keyup.enter="pressedEnter"
       />
@@ -23,21 +26,36 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'Header',
+  props: {
+    filter: { type: Number, default: 13, required: true },
+  },
   data() {
     return {
       userId: '',
-      uidInTitle: '',
       shouldValidate: false,
+      maxNumOfUsers: 0,
     }
+  },
+  mounted() {
+    axios
+      .get(`http://localhost/api/users/`)
+      .then((response) => {
+        this.maxNumOfUsers = response.data.size
+      })
+      .catch((e) => alert(e))
+      .finally(() => {
+        this.overlay = false
+      })
   },
   methods: {
     pressedEnter() {
       let u = parseInt(this.userId)
-      if (!u.isNan && u >= 0) {
+      if (!u.isNan && u >= 0 && u <= this.maxNumOfUsers) {
         this.$emit('filter-user', parseInt(this.userId))
-        this.uidInTitle = this.userId
       }
       this.userId = ''
     },
@@ -53,6 +71,6 @@ export default {
   flex-grow: 1;
 }
 .box {
-  background-color: #4cd7d0;
+  background-color: #a4c3b2;
 }
 </style>

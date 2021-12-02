@@ -1,14 +1,16 @@
 <template>
-  <v-main id="recipeContainer" class="pt-5 pl-2">
+  <v-main id="recipeContainer" class="pt-5 ml-8">
     <v-card v-if="id != null" id="recipePanel" elevation="3" class="pb-6">
       <v-card-title
         v-if="recipeName != ''"
-        class="justify-center lime lighten-1 text-capitalize white--text"
+        id="recipeTitleContainer"
+        class="justify-center text-capitalize white--text"
         >{{ recipeName }}</v-card-title
       >
       <v-card-title
         v-else
-        class="justify-center lime lighten-1 text-capitalize red--text"
+        id="recipeTitleContainer"
+        class="justify-center text-capitalize red--text"
         >Sorry, try another recipe</v-card-title
       >
 
@@ -22,7 +24,7 @@
         {{ capitalizeFirstLetter(description) }}
       </v-card-text>
       <v-card-text v-else>
-        Sorry we did our best but no description was provied for this recipe :(
+        Sorry, this recipe does not provide a description :(
       </v-card-text>
 
       <v-card-title>Ingredients</v-card-title>
@@ -33,11 +35,15 @@
         {{ ingredients.join(', ') }}
       </v-card-text>
       <v-card-text v-else>
-        Sorry we did our best but no ingredients were provied for this recipe :(
+        Sorry, this recipe does not provide a list of ingredients :(
       </v-card-text>
 
       <v-card-title>Directions</v-card-title>
-      <div v-if="steps != []" id="directions" ref="directionsContainer">
+      <div
+        v-if="steps != []"
+        id="directionsContainer"
+        ref="directionsContainer"
+      >
         <v-card-text
           v-for="(step, index) in steps"
           :key="step"
@@ -47,13 +53,14 @@
         </v-card-text>
       </div>
       <v-card-text v-else>
-        No directions were provided for this recipe
+        Sorry, no directions were provided for this recipe :(
       </v-card-text>
     </v-card>
 
     <v-card v-else id="recipePanel" elevation="3" class="pb-4">
       <v-card-title
-        class="justify-center lime lighten-1 text-capitalize white--text"
+        id="recipeTitleContainer"
+        class="justify-center text-capitalize white--text"
         >Recipe Panel</v-card-title
       >
       <v-card-text class="pt-16 justify-center">
@@ -68,7 +75,6 @@
   </v-main>
 </template>
 <script>
-// import { RECIPE_DATA } from '../js/DUMMY_DATA'
 import axios from 'axios'
 
 export default {
@@ -84,31 +90,29 @@ export default {
     ingredients: [],
     steps: [],
     shouldShowFullText: false,
-    overlay: true,
+    overlay: false,
   }),
   watch: {
     recipeId: function () {
       this.updateRecipePanel()
     },
   },
-  mounted() {
-    this.overlay = false
-  },
+
   methods: {
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1)
     },
-    async updateRecipePanel() {
-      await axios
-        .get(`http://localhost/api/recipe/${this.recipeId}`)
-        .then((data) => {
-          this.id = data.data._id
-          this.recipeName = data.data.name
-          this.description = data.data.description
-          this.ingredients = data.data.ingredients
-          this.cookTime = data.data.minutes
-          this.steps = data.data.steps
-        })
+    updateRecipePanel() {
+      this.overlay = true
+      axios.get(`http://localhost/api/recipe/${this.recipeId}`).then((data) => {
+        this.id = data.data._id
+        this.recipeName = data.data.name
+        this.description = data.data.description
+        this.ingredients = data.data.ingredients
+        this.cookTime = data.data.minutes
+        this.steps = data.data.steps
+        this.overlay = false
+      })
     },
     formatCookTime(minutes) {
       let d = Math.floor(minutes / 1440) // 60*24
@@ -122,8 +126,7 @@ export default {
         return `${d} ${dayformat} ${h} ${hourformat} ${m} ${minuteformat}`
       }
 
-      if (minutes < 10) return '0' + minutes
-      else if (minutes == 60) return `${minutes / 60} hour`
+      if (minutes == 60) return `${minutes / 60} hour`
       else if (minutes > 60) {
         if (m == 0) return `${h} hours`
         else {
@@ -136,14 +139,17 @@ export default {
 </script>
 <style scoped>
 #recipeContainer {
-  background-color: #e1c340;
-  width: 50%;
+  background-color: #cce3de;
+  width: 40%;
 }
 #recipePanel {
-  width: 65%;
+  width: 90%;
   height: 99%;
 }
-#directions {
+#recipeTitleContainer {
+  background-color: #6b9080;
+}
+#directionsContainer {
   height: 100px;
   overflow-y: scroll;
   overflow-x: hidden;
