@@ -108,11 +108,10 @@ edges =[]
 # print(req)
 i=0
 for  recipeId in req:
-    i+=1
     id1= int(recipeId)
     node = {
         "id": id1,
-        "group":i
+        "group":1
     }
     # print(id1)
     nodes.append(node)
@@ -125,12 +124,12 @@ for  recipeId in req:
             id2 = int(row['Recipe2'])
             node2 = {
                  "id": id2,
-                "group":i
+                "group":2
             }
             edge = {
                 "source":int(id1),
                 "target":int(id2),
-                "value":int(i)
+                "value": 1
             }
             edges.append(edge)
             nodes.append(node2)
