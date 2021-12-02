@@ -61,7 +61,7 @@ export default {
     nodeSelected(e, node) {
       if (node.index != 0) this.$emit('selectedNode', node.id)
     },
-    async updateNetworkData() {
+    updateNetworkData() {
       this.populateRecipeNetwork()
     },
     displayRecipeName(e, node) {
