@@ -65,9 +65,9 @@ This will run the backend api at localhost:80 and the frontend api at localhost:
 yarn build
 ```
 
-### Run your unit tests
+### Run your backend unit tests
 ```
-yarn test:unit
+yarn test
 ```
 
 ### Run your end-to-end tests

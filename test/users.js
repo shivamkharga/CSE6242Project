@@ -1,7 +1,6 @@
 const users = require('../server')
 const chai = require('chai')
 const chaiHttp = require('chai-http')
-const assert = require('assert')
 
 chai.should()
 chai.use(chaiHttp)
