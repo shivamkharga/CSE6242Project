@@ -26,7 +26,10 @@
       </v-card-text>
 
       <v-card-title>Ingredients</v-card-title>
-      <v-card-text v-if="ingredients.length !== 0" class="text-capitalize">
+      <v-card-text
+        v-if="ingredients !== undefined && ingredients.length !== 0"
+        class="text-capitalize"
+      >
         {{ ingredients.join(', ') }}
       </v-card-text>
       <v-card-text v-else>
@@ -65,7 +68,8 @@
   </v-main>
 </template>
 <script>
-import { RECIPE_DATA } from '../js/DUMMY_DATA'
+// import { RECIPE_DATA } from '../js/DUMMY_DATA'
+import axios from 'axios'
 
 export default {
   name: 'RecipePanel',
@@ -82,30 +86,29 @@ export default {
     shouldShowFullText: false,
     overlay: true,
   }),
-  mounted() {
-    this.overlay = false
-  },
   watch: {
     recipeId: function () {
       this.updateRecipePanel()
-      console.log(this.$refs)
     },
+  },
+  mounted() {
+    this.overlay = false
   },
   methods: {
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1)
     },
-    updateRecipePanel() {
-      RECIPE_DATA.forEach((data) => {
-        if (data.id == this.recipeId) {
-          this.id = data.id
-          this.recipeName = data.recipeName
-          this.description = data.description
-          this.ingredients = data.ingredients
-          this.cookTime = data.cookTime
-          this.steps = data.steps
-        }
-      })
+    async updateRecipePanel() {
+      await axios
+        .get(`http://localhost/api/recipe/${this.recipeId}`)
+        .then((data) => {
+          this.id = data.data._id
+          this.recipeName = data.data.name
+          this.description = data.data.description
+          this.ingredients = data.data.ingredients
+          this.cookTime = data.data.minutes
+          this.steps = data.data.steps
+        })
     },
     formatCookTime(minutes) {
       let d = Math.floor(minutes / 1440) // 60*24
