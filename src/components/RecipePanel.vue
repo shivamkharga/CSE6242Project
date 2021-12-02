@@ -106,7 +106,7 @@ export default {
           this.recipeName = data.data.name
           this.description = data.data.description
           this.ingredients = data.data.ingredients
-          this.cookTime = this.formatCookTime(data.data.minutes)
+          this.cookTime = data.data.minutes
           this.steps = data.data.steps
         })
     },
