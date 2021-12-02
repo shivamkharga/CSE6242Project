@@ -9,7 +9,7 @@
       <v-spacer />
     </v-app-bar>
 
-    <v-main class="amber lighten-5">
+    <v-main id="appContainer">
       <LandingPage />
     </v-main>
   </v-app>
@@ -23,3 +23,8 @@ export default {
   components: { LandingPage },
 }
 </script>
+<style scoped>
+#appContainer {
+  background-color: #cce3de;
+}
+</style>

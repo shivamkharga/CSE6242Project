@@ -1,6 +1,6 @@
 <template>
   <div class="mx-4">
-    <Header @filter-user="updateUserId($event)" />
+    <Header :filter="filter" @filter-user="updateUserId($event)" />
     <div class="d-flex flex-row">
       <NetworkGraph
         :user-id="filter"
@@ -24,7 +24,7 @@ export default {
     RecipePanel,
   },
   data: () => ({
-    filter: 10,
+    filter: 13,
     selectedNode: 0,
   }),
   methods: {
