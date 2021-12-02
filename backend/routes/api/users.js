@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
   })
 })
 
-router.get('/:user_id', async (req, res) => {
+router.get('/:user_id', async (req, res, next) => {
   try {
     const id = req.params.user_id
     var users = await usersModel.find({ _id: id })
@@ -85,7 +85,7 @@ router.get('/:user_id', async (req, res) => {
           links: linksList,
         }
 
-        return res.json(reply)
+        return res.status(200).json(reply)
       })
     } else {
       return res.status(400).json({ error: 'user not found' })
