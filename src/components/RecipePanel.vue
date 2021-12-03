@@ -104,7 +104,7 @@ export default {
     },
     updateRecipePanel() {
       this.overlay = true
-      axios.get(`http://localhost/api/recipe/${this.recipeId}`).then((data) => {
+      axios.get(`/api/recipe/${this.recipeId}`).then((data) => {
         this.id = data.data._id
         this.recipeName = data.data.name
         this.description = data.data.description

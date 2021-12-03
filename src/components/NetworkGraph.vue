@@ -67,7 +67,7 @@ export default {
     displayRecipeName(e, node) {
       if (node.index != 0)
         axios
-          .get(`http://localhost/api/recipe/getName/${node.id}`)
+          .get(`/api/recipe/getName/${node.id}`)
           .then((response) => {
             this.recipeName = response.data.name
           })
@@ -76,7 +76,7 @@ export default {
     populateRecipeNetwork() {
       this.overlay = true
       axios
-        .get(`http://localhost/api/users/${this.userId}`)
+        .get(`/api/users/${this.userId}`)
         .then((response) => {
           this.links = response.data.links
           this.nodes = response.data.nodes

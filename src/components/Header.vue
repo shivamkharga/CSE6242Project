@@ -42,7 +42,7 @@ export default {
   },
   mounted() {
     axios
-      .get(`http://localhost/api/users/`)
+      .get(`/api/users`)
       .then((response) => {
         this.maxNumOfUsers = response.data.size
       })

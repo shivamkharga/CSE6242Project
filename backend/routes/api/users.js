@@ -35,37 +35,37 @@ router.get('/:user_id', async (req, res, next) => {
         user.rec4 +
         ',' +
         user.rec5
-
+      var id_str = 'User#' + id
       var nodesList = [
         {
-          id: parseInt(user.id),
+          id: id_str,
           group: 0,
         },
       ]
 
       var linksList = [
         {
-          source: parseInt(user.id),
+          source: id_str,
           target: parseInt(user.rec1),
           value: 0,
         },
         {
-          source: parseInt(user.id),
+          source: id_str,
           target: parseInt(user.rec2),
           value: 0,
         },
         {
-          source: parseInt(user.id),
+          source: id_str,
           target: parseInt(user.rec3),
           value: 0,
         },
         {
-          source: parseInt(user.id),
+          source: id_str,
           target: parseInt(user.rec4),
           value: 0,
         },
         {
-          source: parseInt(user.id),
+          source: id_str,
           target: parseInt(user.rec5),
           value: 0,
         },
@@ -80,7 +80,7 @@ router.get('/:user_id', async (req, res, next) => {
         nodesList.push.apply(nodesList, nodes.nodes)
         linksList.push.apply(linksList, nodes.links)
         var reply = {
-          user_id: parseInt(user.id),
+          user_id: id_str,
           nodes: nodesList,
           links: linksList,
         }
