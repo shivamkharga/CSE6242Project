@@ -11,7 +11,11 @@
 
 Please install python-pip and the following dependencies using pip. For RedHat Linux based systems use the commands below:
 ```
-sudo yum -y install python-pip
+RedHat Linux: sudo yum -y install python-pip
+Unix / Ubuntu / Kali : sudo apt install python3-pip
+Windows: python get-pip.py (Make sure you have python installed on pc and added to path variable)
+
+
 pip3 install numpy
 pip3 install pandas
 pip3 install -U scikit-learn
@@ -78,6 +82,16 @@ yarn test:e2e
 ### Lints and fixes files
 ```
 yarn lint
+```
+
+### run backend
+```
+node server.js
+```
+
+### Build and Run App
+```
+yarn run dev
 ```
 
 ### Customize configuration
