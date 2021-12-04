@@ -1,5 +1,5 @@
 <template>
-  <v-main id="network" class="text-center pt-8">
+  <v-main id="network" class="text-center pt-8 mb-2">
     <h3 class="mb-2">User-Recipe Network</h3>
     <div id="recipeNameContainer" class="white--text my-0">
       <p class="my-1">Recipe</p>
@@ -8,13 +8,15 @@
       </p>
       <p v-else class="my-0 pb-1">Hover over a node to get the recipe name</p>
     </div>
-    <network
-      :node-list="nodes"
-      :link-list="links"
-      :svg-size="SVGSize"
-      @clickNode="nodeSelected"
-      @hoverNode="displayRecipeName"
-    />
+    <div @mouseover="clearRecipeName">
+      <network
+        :node-list="nodes"
+        :link-list="links"
+        :svg-size="SVGSize"
+        @clickNode="nodeSelected"
+        @hoverNode="displayRecipeName"
+      />
+    </div>
     <v-overlay :opacity="0.6" :value="overlay">
       <v-progress-circular indeterminate size="64">
         Loading...
@@ -92,6 +94,9 @@ export default {
         height: window.innerHeight * 0.6,
         width: window.innerWidth * 0.58,
       }
+    },
+    clearRecipeName() {
+      this.recipeName = ''
     },
   },
 }

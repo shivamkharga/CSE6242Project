@@ -6,7 +6,7 @@
         :user-id="filter"
         @selectedNode="updateRecipePanel($event)"
       />
-      <RecipePanel :recipe-id="selectedNode" />
+      <RecipePanel :recipe-id="selectedNode" :filter="filter" />
     </div>
   </div>
 </template>

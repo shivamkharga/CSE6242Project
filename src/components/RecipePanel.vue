@@ -81,6 +81,7 @@ export default {
   name: 'RecipePanel',
   props: {
     recipeId: { type: Number, default: 0, required: true },
+    filter: { type: Number, default: 0, required: true },
   },
   data: () => ({
     id: null,
@@ -95,6 +96,9 @@ export default {
   watch: {
     recipeId: function () {
       this.updateRecipePanel()
+    },
+    filter: function () {
+      this.filterDidChange()
     },
   },
 
@@ -133,6 +137,14 @@ export default {
           return `${h} hours ${m} ${minuteformat}`
         }
       } else return `${minutes} minutes`
+    },
+    filterDidChange() {
+      this.id = null
+      this.recipeName = null
+      this.description = null
+      this.ingredients = []
+      this.cookTime = 0
+      this.steps = []
     },
   },
 }
