@@ -93,7 +93,7 @@ node server.js
 
 ### Execution
 ```
-yarn run dev
+yarn dev
 ```
 
 ### Customize configuration
