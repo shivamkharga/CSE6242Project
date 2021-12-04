@@ -71,7 +71,7 @@ router.get('/:user_id', async (req, res, next) => {
         },
       ]
 
-      const pyProg = await spawn('python3', ['cbf_live.py', recs])
+      const pyProg = await spawn('python', ['cbf_live.py', recs])
 
       await pyProg.stdout.on('data', async function (data) {
         var nodes = JSON.parse(
