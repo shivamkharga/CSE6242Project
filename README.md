@@ -1,6 +1,8 @@
-# cse6242project
+# Procrastinators: Recipe Recommendations
 
-## Environment set up
+## DESCRIPTION
+ A good recipe recommendation system that takes what a user is familiar with and suggests new recipes a few degrees removed can encourage people to try new things without overwhelming them with something new. This app utilizes the existing data for users, and builds a recipe network graph of recomendations for each user using Collaborative filtering and the similar recipes for each recipe using the Content Based Filtering.
+## INSTALLATION
 * [Node.js](https://nodejs.org/en/)
 * [Yarn](https://yarnpkg.com/)
 * [VSCode](https://code.visualstudio.com/)
@@ -89,7 +91,7 @@ yarn lint
 node server.js
 ```
 
-### Build and Run App
+### Execution
 ```
 yarn run dev
 ```
